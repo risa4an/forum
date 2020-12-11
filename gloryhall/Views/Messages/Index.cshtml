@@ -1,0 +1,48 @@
+﻿
+
+@model IEnumerable<gloryhall.Data.Models.Message>
+<!DOCTYPE html>
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>Thread</title>
+
+    <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet" type="text/css" />
+    <link href="https://gloryhall.azurewebsites.net/css/Messages.css"  rel="stylesheet" type="text/css" />
+
+</head>
+<body>
+    
+    <div class="row">
+        <div class="col-12">
+            <hr />
+        </div>
+    </div>
+    <div class="row mes-box" id="messages">
+        @if (Model != null)
+        {
+        @foreach (var item in Model)
+        {
+            <div class="row mb-3">
+                <div class="col-md-4 themed-grid-col" style="font-weight:bold">@item.User.UserName</div>
+                <div class="col-md-8 themed-grid-col">@item.text</div>
+            </div>
+        }}
+
+    </div>
+    <div class="container input-box">
+        <div class="row mes-input">
+        
+            <div class="col-12"><input type="text" class="field" id="messageInput" /><input type="hidden" value="@ViewData["id"]" id="threadID"/></div>
+        </div>
+        <div class="row">
+            <div class="col-6">
+                <input type="button" class="send-btn" id="sendButton" value="Send Message" />
+            </div>
+        </div>
+    </div>
+</body>
+</html>
+
+<script src="https://localhost:5001/js/signalr/dist/browser/signalr.js"></script>
+<script src="https://localhost:5001/js/Chathub.js"></script>

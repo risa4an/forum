@@ -1,0 +1,49 @@
+﻿@model gloryhall.Data.ViewModels.RegisterViewModel
+@{
+    ViewBag.Title = "Регистрация";
+}
+
+<!DOCTYPE html>
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>@ViewBag.Title</title>
+    <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet" type="text/css" />
+
+</head>
+<body>
+    <div class="container">
+        <div class="py-5 text-center">
+            <img class="d-block mx-auto mb-4" src="/docs/4.5/assets/brand/bootstrap-solid.svg" alt="" width="72" height="72">
+            <h2>Checkout form</h2>
+            <p class="lead">Below is an example form built entirely with Bootstrap’s form controls. Each required form group has a validation state that can be triggered by attempting to submit the form without completing it.</p>
+        </div>
+        @using (Html.BeginForm("Register", "Account", FormMethod.Post))
+        {
+            <div class="mb-3">
+                <label for="username">Username</label>
+                @Html.EditorFor(model => model.UserName, new { htmlAttributes = new { @class = "form-control" } })
+                @Html.ValidationMessageFor(model => model.UserName)
+            </div>
+            <div class="mb-3">
+                <label for="username">Email</label>
+                @Html.EditorFor(model => model.Email, new { htmlAttributes = new { @class = "form-control" } })
+                @Html.ValidationMessageFor(model => model.Email)
+            </div>
+            <div class="mb-3">
+                <label for="username">Password</label>
+                @Html.EditorFor(model => model.Password, new { htmlAttributes = new { @class = "form-control" } })
+                @Html.ValidationMessageFor(model => model.Password)
+            </div>
+            <div class="mb-3">
+                <label for="username">PasswordConfirm</label>
+                @Html.EditorFor(model => model.PasswordConfirm, new { htmlAttributes = new { @class = "form-control" } })
+                @Html.ValidationMessageFor(model => model.PasswordConfirm)
+            </div>
+            <div>
+                <input class="btn btn-primary btn-lg btn-block" type="submit" value="Регистрация" />
+            </div>
+        }
+    </div>
+</body>
+</html>
